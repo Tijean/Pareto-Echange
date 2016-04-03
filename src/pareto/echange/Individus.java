@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pareto.echange;
+package pareto;
 
 /**
  *
@@ -14,10 +14,15 @@ public class Individus {
     int consommation [];
     final String NOMPRODUCTION[] = {"Carotte", "Patate"};
     final int TAILLE =2;
+    double u_init;
+    
+    //pour chaque boucle, créer une variable
+    
     
     public Individus(int production[]){
         this.production = production;
         this.consommation = production;
+        this.u_init = utilite(consommation);
     }
     
     public double utilite(int consommer[]){
@@ -27,6 +32,9 @@ public class Individus {
             u+= java.lang.Math.pow(valeur,0.5);
         }
         return u;
+    }
+    public boolean u_valide(double u){
+       return u>u_init; 
     }
     @Override
     public String toString(){
